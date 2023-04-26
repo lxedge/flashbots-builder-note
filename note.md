@@ -103,6 +103,19 @@ tar xvf staking_deposit-cli-d7b5304-darwin-amd64.tar.gz
 
 <img src="images/validator-node.png" />
 
+#### Step 5 - mev-boost
+
+```bash
+git clone https://github.com/flashbots/mev-boost
+cd mev-boost
+make build
+
+# 运行
+./mev-boost -goerli -relay-check -relays https://0xafa4c6985aa049fb79dd37010438cfebeb0f2bd42b115b89dd678dab0670c1de38da0c4e9138c9290a398ecd9a0b3110@builder-relay-goerli.flashbots.net
+```
+
+<img src="images/mev-boost.png" />
+
 ## TODO
 
 - 使用 docker 运行 local devnet

@@ -62,6 +62,8 @@ msg="Could not generate beacon chain genesis state" error="could not set config 
 geth --goerli --http --http.api eth,net,engine,admin --authrpc.jwtsecret /path/to/jwt.hex
 ```
 
+<img src="images/execution-node.png" />
+
 #### Step 3 - 使用 prysm 运行 beacon node - Consensus Layer
 
 ```bash
@@ -71,6 +73,8 @@ git clone https://github.com/eth-clients/eth2-networks
 # 运行信标节点，替换 jwt-secret，genesis-state 路径，替换收费地址
 ./prysm.sh beacon-chain --execution-endpoint=http://localhost:8551 --prater --jwt-secret=path/to/jwt.hex --genesis-state=genesis.ssz --suggested-fee-recipient=0x01234567722E6b0000012BFEBf6177F1D2e9758D9
 ```
+
+<img src="images/beacon-node.png" />
 
 使用 [checking-status](https://docs.prylabs.network/docs/monitoring/checking-status) 查看节点状态
 
@@ -96,6 +100,8 @@ tar xvf staking_deposit-cli-d7b5304-darwin-amd64.tar.gz
 # 运行验证节点
 ./prysm.sh validator --wallet-dir=<YOUR_FOLDER_PATH> --prater
 ```
+
+<img src="images/validator-node.png" />
 
 ## TODO
 

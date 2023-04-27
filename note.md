@@ -108,7 +108,9 @@ tar xvf staking_deposit-cli-d7b5304-darwin-amd64.tar.gz
 ```bash
 git clone https://github.com/flashbots/mev-boost
 cd mev-boost
+# 用于中继 relay 服务
 make build
+# 用于测试
 make build-testcli
 
 # 运行

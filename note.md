@@ -29,7 +29,7 @@
 **出现错误**
 msg="Could not generate beacon chain genesis state" error="could not set config params: config name=interop conflicts with existing config named=mainnet: configset cannot add config with conflicting fork version schedule"
 
-通过排查 DockerFile docker-compose.yml config.yml 文件
+通过排查仓库中 DockerFile docker-compose.yml config.yml 文件
 
 - compose 中，`beacon-chain` 服务的 `interop-genesis-state` 参数应为 `genesis-state`。（根据 prysm 文档）
 - 创建信标链创世节点的配置缺少 `CAPELLA_FORK` 参数。[shanghai-and-capella-forks](https://beincrypto.com/eth-core-devs-roll-out-shanghai-and-capella-forks/)，核实最后提交时间确定问题
@@ -109,12 +109,15 @@ tar xvf staking_deposit-cli-d7b5304-darwin-amd64.tar.gz
 git clone https://github.com/flashbots/mev-boost
 cd mev-boost
 make build
+make build-testcli
 
 # 运行
 ./mev-boost -goerli -relay-check -relays https://0xafa4c6985aa049fb79dd37010438cfebeb0f2bd42b115b89dd678dab0670c1de38da0c4e9138c9290a398ecd9a0b3110@builder-relay-goerli.flashbots.net
 ```
 
 <img src="images/mev-boost.png" />
+
+使用 [test-cli](https://github.com/flashbots/mev-boost/tree/main/cmd/test-cli) 测试
 
 ## TODO
 

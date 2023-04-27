@@ -16,7 +16,7 @@
 
 提议者和构建者分离策略
 
-<img src="images/flow.jpep" />
+<img src="images/flow.jpeg" />
 
 **searcher:** 发送用户的交易到公共内存池
 

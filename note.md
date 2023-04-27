@@ -135,6 +135,22 @@ make build-testcli
 
 使用 [test-cli](https://github.com/flashbots/mev-boost/tree/main/cmd/test-cli) 测试
 
+## miner
+
+miner 中支持多个 tx selection 策略，可以根据不同策略组合出一组 txs bundle 以实现最大化利润。
+
+**worker:**
+
+接收到 event 后，自动生成 task，使用选择的策略生成 Work，在 multi_worker 中，对 config 做了一些分支处理，如根据 algo 选择了不同的 worker 类型
+
+**algo:**
+
+`algo_greedy.go:buildBlock` 使用 greedy 策略来生产块，该方法从 worker 中 copy 出 events，然后选择出交易。当有新的交易到达，重复执行以获得最新的 bundle
+
+**miner:** 
+
+miner 的 config，包括 gas，interval，algo 策略，创建 block 及 payload，并调用 `multi_worker:buildPayload`
+
 ## TODO
 
 - 使用 docker 运行 local devnet

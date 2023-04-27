@@ -16,7 +16,21 @@
 
 提议者和构建者分离策略
 
-由于 ETH2.0 升级，带来了新的审查和舞弊的可能。
+<img src="images/flow.jpep" />
+
+**searcher:** 发送用户的交易到公共内存池
+
+**block builder:** 从公共内存池按照自己对交易顺序的排量组合，构建一组符合自己策略的 tx bundle
+
+**mempool:** 待处理的用户的交易
+
+**builder:** 把交易事件整理出一个 MEV 的 bundle，并发送给 miner。每当有 tx event 时触发 building job
+
+**miner:** 接受到 builder 的参数和 bundle 后，创建一个 block，并出价给 relayer 中继
+
+**relayer:** 作为被 buider 和 validator 共同信任的节点，从 builder 收集竞价，验证block并隐藏内部交易，通过 getHeader 展示给 validator，当 validator 购买后，通过 getPayload 发送 body
+
+**validator:** 验证完成后，把交易数据提交到 EL
 
 ## Local Devnet
 
